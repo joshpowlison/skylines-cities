@@ -1,0 +1,57 @@
+<title>Skylines: Cities</title>
+
+<p>INFO: <span id="message">GAME START</span></p>
+<p>BUILDINGS: <p id="buildings">0</p>
+<p>SKYLINE SCORE: <p id="score">0</p>
+
+<p><button id="build" style="background-color:green;">BUILD BUILDING</button><p>
+
+<script>
+
+	const INFO		= document.getElementById('message');
+	const BUILDINGS	= document.getElementById('buildings');
+	const SCORE		= document.getElementById('score');
+	
+	var buildingCount = 0;
+	
+	var messageInterval = 0;
+	
+	setInterval(checkScore, 100);
+
+	var messages = [
+		'People like you',
+		'People want more buildings',
+		'"Ohemgee, we have buildings" - Kate, Twotter',
+		'"I was advertised skylines but I cant see anything over these biuldings" - Tom, Twatter',
+		'People require more buildings for more happiness',
+		'Real estate is booming',
+		'You are good at this game',
+		'Good job',
+		'People are happy',
+		'People want a new mayor, you suck',
+		'"BUILDINAGSEA" - Real Estate Agent, Twetter',
+		'"I want a hose I mean house lol" - Kate, Twotter',
+		'People want a library but that\'s paid DLC'
+	];
+
+	function checkScore(){
+		messageInterval--;
+	
+		if(messageInterval <= 0)
+		{
+			messageInterval = Math.random() * 30;
+			var messageId = Math.floor((Math.random() * messages.length));
+			INFO.innerHTML = messages[messageId];
+		}
+	
+	
+		BUILDINGS.innerHTML = buildingCount;
+		SCORE.innerHTML = buildingCount * (Math.random() + .25) * 37;
+		
+	}
+	
+	document.getElementById('build').addEventListener('click',function(){
+		buildingCount ++;
+	});
+
+</script>
